@@ -27,6 +27,12 @@ class Database:
     result = self.cur.fetchall()
     return result
 
+  def search_user(self, firstName, lastName, email):
+    sql = "select * from testDB.User where firstName = %s or lastName = %s or email = %s"
+    self.cur.execute(sql)
+    result = self.cur.fetchall()
+    return result
+
 
 # if __name__ == '__main__':
 #     app.run(debug=True)

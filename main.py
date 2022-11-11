@@ -1,22 +1,25 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import db
 
 app = Flask(__name__)
-
+mydb = db.Database()
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
-@app.route('/insert')
-def insert():
-    return render_template('')
+@app.route('/search_user', methods = ['POST'])
+def search_user():
+    firstName = request.form.get('fname')
+    lastName = request.form.get('lname')
+    email = request.form.get('email')
+    result = mydb.search_user(firstName, lastName, email)
+    return render_template('users.html', result = result)
 
 
 @app.route('/test_db/')
 def test_db():
-    mydb = db.Database()
     result = mydb.test()
     return result
 
