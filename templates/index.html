@@ -1,6 +1,5 @@
-<!-- Create -->
 
-<!-- Read -->
+
 
 <!-- Update -->
 
@@ -11,18 +10,73 @@
 <!DOCTYPE html>
 <html>
 <body>
+	<!-- Create -->
+	<h2>Create New User</h2>
 
-<h2>HTML Forms</h2>
+	<form action="">
+		<label for="fname">First name:</label><br>
+		<input type="text" id="fname" name="fname" value="John"><br>
+		<label for="lname">Last name:</label><br>
+		<input type="text" id="lname" name="lname" value="Doe"><br><br>
+		<label for="lname">Email:</label><br>
+		<input type="text" id="email" name="email" value="johndoe@gmail.com"><br><br>
+		<input type="submit" value="Add new user">
+	</form> 
 
-<form action="db.py">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-  <input type="submit" value="Submit">
-</form> 
+	<!-- Read -->
+	<h2>Read Info about Existing User</h2>
 
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+	<form action="">
+		<label for="fname">First name:</label><br>
+		<input type="text" id="fname" name="fname" value="John"><br>
+		<label for="lname">Last name:</label><br>
+		<input type="text" id="lname" name="lname" value="Doe"><br><br>
+		<!-- <label for="lname">Email:</label><br>
+		<input type="text" id="email" name="email" value="johndoe@gmail.com"><br><br> -->
+		<input type="submit" value="Retrieve User Email">
+	</form> 
+
+	<!-- Search -->
+	<h2>Search Existing User</h2>
+
+	<form action="">
+		<label for="fname">First name:</label><br>
+		<input type="text" id="fname" name="fname" value="John"><br>
+		<label for="lname">Last name:</label><br>
+		<input type="text" id="lname" name="lname" value="Doe"><br><br>
+		<label for="lname">Email:</label><br>
+		<input type="text" id="email" name="email" value="johndoe@gmail.com"><br><br>
+		<input type="submit" value="Find user">
+	</form> 
+
+
+	<!-- Update -->
+	<h2>Update User Info</h2>
+
+	<form action="">
+		<label for="fname">First name:</label><br>
+		<input type="text" id="fname" name="fname" value="John"><br>
+		<label for="lname">Last name:</label><br>
+		<input type="text" id="lname" name="lname" value="Doe"><br><br>
+		<label for="lname">New Email:</label><br>
+		<input type="text" id="email" name="email" value="newemail@gmail.com"><br><br>
+		<input type="submit" value="Update user email">
+	</form> 
+
+
+	<!-- Delete -->
+	<h2>Remove Existing User</h2>
+
+	<form action="">
+		<label for="fname">First name:</label><br>
+		<input type="text" id="fname" name="fname" value="John"><br>
+		<label for="lname">Last name:</label><br>
+		<input type="text" id="lname" name="lname" value="Doe"><br><br>
+		<label for="lname">Email:</label><br>
+		<input type="text" id="email" name="email" value="johndoe@gmail.com"><br><br>
+		<input type="submit" value="Delete user">
+	</form> 
+
 
 </body>
 </html>

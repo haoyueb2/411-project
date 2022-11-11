@@ -1,21 +1,32 @@
 from flask import Flask
-from flask_mysqldb import MySQL
-
+import pymysql
+# from flask_cors import *
+# from flask import Response,request
 
 app = Flask(__name__)
-
-app.config['MYSQL_HOST'] = '34.171.35.27'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'test1234'
-app.config['MYSQL_DB'] = 'CS-411'
-
-mysql = MySQL(app)
+# CORS(app, supports_credentials=True)
 
 
+class Database:
 
-@app.route('/')
-def index():
-    return 'Hello from Flask!'
+  def __init__(self):
+    host = "34.171.35.27"
+    user = "root"
+    password = "test1234"
+    db = "cs-411"
+    self.con = pymysql.connect(host=host,
+                               user=user,
+                               password=password,
+                               db=db,
+                               cursorclass=pymysql.cursors.DictCursor)
+    self.cur = self.con.cursor()
+
+  def test(self):
+    sql = "select * from testDB.Unit"
+    self.cur.execute(sql)
+    result = self.cur.fetchall()
+    return result
 
 
-app.run(host='0.0.0.0', port=81)
+# if __name__ == '__main__':
+#     app.run(debug=True)

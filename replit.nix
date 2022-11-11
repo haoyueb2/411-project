@@ -1,5 +1,7 @@
 { pkgs }: {
   deps = [
+    pkgs.google-cloud-sdk
+    pkgs.wget
     pkgs.python38Full
   ];
   env = {
