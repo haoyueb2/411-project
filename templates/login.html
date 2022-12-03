@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- Login -->
+    <h2>Hello, {{firstname}} {{lastname}}</h3>
+
+
+        <!-- user posting a new unit to the website -->
+        <h2>Add a new unit</h2>
+
+        <form action="/add_unit" method="POST">
+            <label for="buildingID">Building ID name:</label><br>
+            <input type="text" id="buildingid" name="buildingid" value="1020"><br>
+            <label for="Conditioner">AC type:</label><br>
+            <input type="text" id="Conditioner" name="Conditioner" value="Central Air Conditioner"><br>
+
+            <label for="price">Listed Price:</label><br>
+            <input type="text" id="price" name="price" value=10000><br>
+            <label for="numBedroom">Number of bedrooms:</label><br>
+            <input type="text" id="numBedroom" name="numBedroom" value=3><br>
+
+            <label for="numBathroom">Number of bathrooms:</label><br>
+            <input type="text" id="numBathroom" name="numBathroom" value=2><br>
+            <label for="numkitchen">Number of kitchens:</label><br>
+            <input type="text" id="numkitchen" name="numkitchen" value=1><br>
+
+            <label for="totalLivingArea">Total Living Area:</label><br>
+            <input type="text" id="totalLivingArea" name="totalLivingArea" value=60><br>
+            <!--     <label for="renterID">RenterID</label><br>
+    <input type="text" id="renterID" name="renterID" value=3><br><br> -->
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <p>Please enter the following fields to specify the information about the new unit you would like to add to the
+            system.</p>
+
+
+        <!-- Read -->
+        <h2>Read Info about Existing User</h2>
+
+        <form action="search_user" method="GET">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" value="John"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" value="Doe"><br><br>
+            <!-- <label for="lname">Email:</label><br>
+		<input type="text" id="email" name="email" value="johndoe@gmail.com"><br><br> -->
+            <input type="submit" value="Retrieve User Email">
+        </form>
+
+        <!-- Search -->
+        <h2>Search Existing User</h2>
+
+        <form action="/search_user" method="POST">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" value="John"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" value="Doe"><br><br>
+            <label for="lname">Email:</label><br>
+            <input type="text" id="email" name="email" value="johndoe@gmail.com"><br><br>
+            <input type="submit" value="Find user">
+        </form>
+
+
+        <!-- Update -->
+        <h2>Update User Info</h2>
+
+        <form action="/update_user" method="POST">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="update_firstname" value="John"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="update_lastname" value="Doe"><br><br>
+            <label for="lname">New Email:</label><br>
+            <input type="text" id="email" name="update_email" value="newemail@gmail.com"><br><br>
+            <input type="submit" value="Update user email">
+        </form>
+
+
+        <!-- Delete -->
+        <h2>Remove Existing User</h2>
+
+        <form action="/delete_user" method="POST">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="delete_firstname" value="John"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="delete_lastname" value="Doe"><br><br>
+            <label for="lname">Email:</label><br>
+            <input type="text" id="email" name="delete_email" value="johndoe@gmail.com"><br><br>
+            <input type="submit" value="Delete user">
+        </form>
+
+        <!-- Advanced query 1 -->
+        <h2>Advanced Search Demo 1</h2>
+        <p>Return all buildings that were built after [{{built_year}}], with at least [{{stories}}] stories and has
+            [{{higher_lower}}] than average price</p>
+        {% for item in advance_1 %}
+        <p>{{item}}</p>
+        {% endfor %}
+        <form action="/advance_1" method="POST">
+            <label for="builtYear">Built After:</label><br>
+            <input type="text" id="builtYear" name="builtYear" value="1990"><br>
+            <label for="minStories">Minimum number of stories:</label><br>
+            <input type="text" id="minStories" name="minStories" value="3"><br><br>
+
+            <input type="radio" id="higher" name="radio" value="higher">
+            <label for="html">Price higher than average</label><br>
+            <input type="radio" id="lower" name="radio" value="lower">
+            <label for="css">Price lower than average</label><br>
+
+            <input type="submit" value="Submit query">
+        </form>
+
+        <!-- Advanced query 2 -->
+        <h2>Advanced Search Demo 2</h2>
+        <p>Return all buildings and corresponding user ratings for year [{{reviewYear}}], with user-specified building
+            type [{{house_type}}] and whether the building has air conditioning [{{air_condition}}]</p>
+        {% for item in advance_2 %}
+        <p>{{item}}</p>
+        {% endfor %}
+        <form action="/advance_2" method="POST">
+            <label for="reviewYear">Review year:</label><br>
+            <input type="text" id="reviewYear" name="reviewYear" value="2015"><br>
+
+            <input type="radio" id="house" name="buildingType" value="House">
+            <label for="html">House</label><br>
+            <input type="radio" id="condo" name="buildingType" value="Condo">
+            <label for="css">Condo</label><br>
+            <input type="radio" id="Apartment" name="buildingType" value="Apartment">
+            <label for="css">Apartment</label><br>
+            <input type="radio" id="ac" name="ac">
+            <label for="css">Air Conditioning</label><br>
+
+
+
+            <input type="submit" value="Submit query">
+        </form>
+
+        <!-- Simple discount query 1 -->
+        <h2>Simple discount query 1</h2>
+        <p>Return corresponding discounted unit information based on [{{UnitID}}]</p>
+        {% for item in sim_disc_1 %}
+        <p>{{item}}</p>
+        {% endfor %}
+        <form action="/sim_disc_1" method="POST">
+
+
+            <label for="lname">UnitID:</label><br>
+            <input type="text" id="UnitID" name="UnitID"><br><br>
+
+            <input type="submit" value="Submit query">
+        </form>
+
+        <form action="/call_procedure" method="POST">
+            <h2>Get Discount</h2>
+            <input type="submit" value="Submit query">
+        </form>
+
+
+</body>
+
+</html>
